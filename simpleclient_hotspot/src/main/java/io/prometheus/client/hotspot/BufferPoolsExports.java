@@ -20,9 +20,9 @@ import java.util.List;
  * </pre>
  * Example metrics being exported:
  * <pre>
- *   jvm_buffer_bytes_used{name="direct"} 2000000
- *   jvm_buffer_bytes_capacity{name="direct"} 200000
- *   jvm_buffer_count{name="nonheap"} 20
+ *   jvm_buffer_pool_bytes_used{name="direct"} 2000000
+ *   jvm_buffer_pool_bytes_capacity{name="direct"} 200000
+ *   jvm_buffer_pool_count{name="nonheap"} 20
  * </pre>
  */
 public class BufferPoolsExports extends Collector {
@@ -38,17 +38,17 @@ public class BufferPoolsExports extends Collector {
 
     void addBufferPoolMetrics(List<MetricFamilySamples> sampleFamilies) {
         GaugeMetricFamily used = new GaugeMetricFamily(
-                "jvm_buffer_bytes_used",
+                "jvm_buffer_pool_bytes_used",
                 "Estimate of the memory (bytes) that the Java virtual machine is using for this buffer pool.",
                 Collections.singletonList("name"));
 
         GaugeMetricFamily capacity = new GaugeMetricFamily(
-                "jvm_buffer_bytes_capacity",
+                "jvm_buffer_pool_bytes_capacity",
                 "Estimate of the total capacity (bytes) of the buffers in this pool.",
                 Collections.singletonList("name"));
 
         CounterMetricFamily count = new CounterMetricFamily(
-                "jvm_buffer_count",
+                "jvm_buffer_pool_count",
                 "Estimate of the number of buffers in the pool",
                 Collections.singletonList("name"));
 
