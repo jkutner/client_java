@@ -26,6 +26,7 @@ public class DefaultExports {
       new ThreadExports().register();
       new ClassLoadingExports().register();
       new VersionInfoExports().register();
+      new BufferPoolsExports().register();
       initialized = true;
     }
   }
